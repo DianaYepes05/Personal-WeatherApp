@@ -19,8 +19,84 @@
     <title>Weather App</title>
   </head>
   <body>
-    <div id="container">
-      <h1>Hello world</h1>
+     <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="row">
+            <div class="time col-sm-5">Current time:</div>
+            <div class="hour col-sm-2">09:30</div>
+            <div class="hourFormat col">
+              <i class="fa-solid fa-ellipsis-vertical"></i> 24h
+            </div>
+          </div>
+        </div>
+        <div class="moreOptions col">
+          <i class="fa-solid fa-ellipsis"></i>
+        </div>
+      </div>
+      <div class="row">
+        <div class="cityIn col-sm-7">
+          <h1>Madrid</h1>
+        </div>
+        <div class="col-sm-5">
+          <div class="row">
+            <div class="citySearch col">🔎</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="temperature col-sm-6">
+          <h2>4</h2>
+        </div>
+        <div class="col-sm-6">
+          <div class="row">
+            <div class="celsius col-sm-1">℃</div>
+            <div class="fahrenheit col-sm-1">
+              <i class="fa-solid fa-ellipsis-vertical"></i>
+              ℉
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="date col">
+          <h3>Monday 30 Jan 2023</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="highTemp col-sm-6">H: 8°</div>
+        <div class="lowTemp col-sm-6">L: -4°</div>
+      </div>
+      <br />
+      <div class="backgroundBox">
+        <div class="daysOfTheWeek row">
+          <div class="col">Tuesday</div>
+          <div class="col">Wednesday</div>
+          <div class="col">Thurday</div>
+          <div class="col">Friday</div>
+          <div class="col">Saturday</div>
+          <div class="col">Sunday</div>
+          <div class="col">Monday</div>
+        </div>
+        <div class="weatherWeek row">
+          <div class="col">☀️</div>
+          <div class="col">☀️</div>
+          <div class="col">☀️</div>
+          <div class="col">☀️</div>
+          <div class="col">☀️</div>
+          <div class="col">☀️</div>
+          <div class="col">☀️</div>
+        </div>
+        <div class="lowHighOfTheWeek row">
+          <div class="col">11° -1°</div>
+          <div class="col">13° -1°</div>
+          <div class="col">14° -1°</div>
+          <div class="col">14° -1°</div>
+          <div class="col">15° -1°</div>
+          <div class="col">16° 0°</div>
+          <div class="col">14° 0°</div>
+        </div>
+      </div>
     </div>
     <script href="src/index.js"></script>
   </body>
