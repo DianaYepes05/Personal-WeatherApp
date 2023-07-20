@@ -15,49 +15,32 @@
       integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
       crossorigin="anonymous"
     ></script>
+    <script
+      src="https://kit.fontawesome.com/44b6ce0b25.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="src/styles.css" />
     <title>Weather App</title>
   </head>
   <body>
-     <div class="container">
+    <div class="container">
       <div class="row">
         <div class="col">
-          <div class="row">
-            <div class="time col-sm-5">Current time:</div>
-            <div class="hour col-sm-2">09:30</div>
-            <div class="hourFormat col">
-              <i class="fa-solid fa-ellipsis-vertical"></i> 24h
-            </div>
-          </div>
+          <p>Current time: <span id="time">09:30</span></p>
         </div>
-        <div class="moreOptions col">
-          <i class="fa-solid fa-ellipsis"></i>
+        <div class="col">
+          <input type="search" name="newCity" id="newCity" />
         </div>
       </div>
-      <div class="row">
-        <div class="cityIn col-sm-7">
-          <h1>Madrid</h1>
-        </div>
-        <div class="col-sm-5">
-          <div class="row">
-            <div class="citySearch col">🔎</div>
-          </div>
-        </div>
+
+      <div id="defaultCity">
+        <h1>Madrid</h1>
       </div>
-      <div class="row">
-        <div class="temperature col-sm-6">
-          <h2>4</h2>
-        </div>
-        <div class="col-sm-6">
-          <div class="row">
-            <div class="celsius col-sm-1">℃</div>
-            <div class="fahrenheit col-sm-1">
-              <i class="fa-solid fa-ellipsis-vertical"></i>
-              ℉
-            </div>
-          </div>
-        </div>
+
+      <div class="float-left">
+        <span class="temperature" id="temp">19 °C</span>
       </div>
+
       <div class="row">
         <div class="date col">
           <h3>Monday 30 Jan 2023</h3>
