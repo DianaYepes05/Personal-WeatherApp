@@ -1,20 +1,41 @@
-h1, defaultCity {
+.weatherApp {
+    border: 1px solid #dadde1;
+    padding: 15px;
+    margin: 20px auto;
+    border-radius: 10px;
+    max-width: 600px;
+}
+h1,
+defaultCity {
   color: rgb(33, 33, 33);
   text-align: center;
-  font-size: 45px ;
+  font-size: 45px;
+}
+h4 {
+  text-align: center;
 }
 
-.temperature {
+.temp-info {
   color: rgb(33, 33, 33);
   font-size: 50px;
-  font-weight: 400;
   line-height: 1;
   text-align-last: end;
-  padding: 0px;
-  
+}
+.highTemp {
+  text-align-last: end;
+  width: 548px;
 }
 .units {
-    top: -34px;
+  top: -34px;
+}
+.daysOfTheWeek {
+  text-align: center;
+}
+.weatherWeek {
+  text-align: center;
+}
+.tempOfTheWeek {
+  text-align: center;
 }
 .codedBy {
   text-align: center;

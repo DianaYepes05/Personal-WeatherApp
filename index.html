@@ -24,6 +24,7 @@
   </head>
   <body>
     <div class="container">
+      <div class="weatherApp">
       <div class="row">
         <div class="col">
           <p>Current time: <span id="time">09:30</span></p>
@@ -44,9 +45,14 @@
       <div id="defaultCity">
         <h1>Madrid</h1>
       </div>
+     
+        <div id="today">
+          <h4>Monday 30 Jan 2023</h3>
+        </div>
+      
 
-      <div class="row justify-content-end">
-        <div class="col-6" id="temp-info">
+      <div class="row justify-content-around">
+        <div class="col-6 temp-info" id="temp-info">
           <span class="temperature" id="temp">19</span>
         </div>
         <div class="col-6">
@@ -56,18 +62,12 @@
         </div>
       </div>
 
-      <div class="row">
-        <div class="today">
-          <h3>Monday 30 Jan 2023</h3>
-        </div>
-      </div>
-      <div class="row">
-        <div class="highTemp col-sm-6">H: 8°</div>
-        <div class="lowTemp col-sm-6">L: -4°</div>
+      <div class="row justify-content-evenly">
+        <div class="col-6 highTemp">H: <span class="highTemp">8</span>°</div>
+        <div class="col-6 lowTemp">L: <span class="lowTemp">-4</span>°</div>
       </div>
       <br />
-      <div class="backgroundBox">
-        <div class="daysOfTheWeek row">
+        <div class="row justify-content-evenly daysOfTheWeek">
           <div class="col">Tuesday</div>
           <div class="col">Wednesday</div>
           <div class="col">Thurday</div>
@@ -76,7 +76,7 @@
           <div class="col">Sunday</div>
           <div class="col">Monday</div>
         </div>
-        <div class="weatherWeek row">
+        <div class="row justify-content-evenly weatherWeek">
           <div class="col">☀️</div>
           <div class="col">☀️</div>
           <div class="col">☀️</div>
@@ -85,7 +85,7 @@
           <div class="col">☀️</div>
           <div class="col">☀️</div>
         </div>
-        <div class="lowHighOfTheWeek row">
+        <div class="row justify-content-evenly tempOfTheWeek">
           <div class="col">11° -1°</div>
           <div class="col">13° -1°</div>
           <div class="col">14° -1°</div>
@@ -94,7 +94,7 @@
           <div class="col">16° 0°</div>
           <div class="col">14° 0°</div>
         </div>
-      </div>
+        </div>
     </div>
     <p class="codedBy">
       <a
