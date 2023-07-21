@@ -1,5 +1,7 @@
-h1 {
-  color: tomato;
+h1, defaultCity {
+  color: rgb(33, 33, 33);
+  text-align: center;
+  font-size: 45px ;
 }
 
 .temperature {
@@ -7,10 +9,12 @@ h1 {
   font-size: 50px;
   font-weight: 400;
   line-height: 1;
+  text-align-last: end;
+  padding: 0px;
+  
 }
 .units {
-  position: relative;
-  top: -34px;
+    top: -34px;
 }
 .codedBy {
   text-align: center;

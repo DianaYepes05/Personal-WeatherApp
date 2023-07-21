@@ -34,6 +34,9 @@
             name="newCity"
             id="newCity"
             placeholder="Type a city..."
+            autofocus="on"
+            autocomplete="off"
+            class="form-control shadow-sm"
           />
         </div>
       </div>
@@ -42,15 +45,19 @@
         <h1>Madrid</h1>
       </div>
 
-      <div class="float-left">
-        <span class="temperature" id="temp">19</span>
-        <span class="units">
-          <a href="#" id="c">°C</a> | <a href="#" id="f">°F</a>
-        </span>
+      <div class="row justify-content-end">
+        <div class="col-6" id="temp-info">
+          <span class="temperature" id="temp">19</span>
+        </div>
+        <div class="col-6">
+          <span class="units">
+            <a href="#" id="c">°C</a> | <a href="#" id="f">°F</a>
+          </span>
+        </div>
       </div>
 
       <div class="row">
-        <div class="date col">
+        <div class="today">
           <h3>Monday 30 Jan 2023</h3>
         </div>
       </div>
