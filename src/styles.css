@@ -1,12 +1,18 @@
-h1 { color: tomato;}
+h1 {
+  color: tomato;
+}
 
 .temperature {
-color: rgb(33, 33, 33);
-    font-size: 50px;
-    font-weight: 400;
-    line-height: 1;
+  color: rgb(33, 33, 33);
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 1;
 }
-.units{
-      position: relative;
-    top: -34px;
+.units {
+  position: relative;
+  top: -34px;
+}
+.codedBy {
+  text-align: center;
+  font-family: arial, sans-serif;
 }
