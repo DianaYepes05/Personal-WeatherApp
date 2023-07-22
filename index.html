@@ -23,14 +23,14 @@
     <title>Weather App</title>
   </head>
   <body>
-    <div class="container">
+    <div class="container ">
       <div class="weatherApp">
-      <div class="row">
-        <div class="col">
-          <p>Current time: <span id="time">09:30</span></p>
-        </div>
-        <div class="col">
-          <input
+        <div class="row searchingRow">
+          <div class="col-6">
+            <p>Current time: <span id="time">09:30</span></p>
+          </div>
+          <div class="col-5">
+            <input
             type="search"
             name="newCity"
             id="newCity"
@@ -38,35 +38,47 @@
             autofocus="on"
             autocomplete="off"
             class="form-control shadow-sm"
-          />
+            />
+          </div>
+          <div class="col-1 submit">
+            <input
+              type="submit"
+              value="🔎"
+              class="form-control btn"
+            />
+          </div>
         </div>
-      </div>
 
-      <div id="defaultCity">
-        <h1>Madrid</h1>
-      </div>
-     
+        <div class="current">
+          <button type="button" class="btn btn-success" id="currentButton">
+            Current Location
+          </button>
+        </div>
+
+        <div id="defaultCity">
+          <h1>Madrid</h1>
+        </div>
+
         <div id="today">
-          <h4>Monday 30 Jan 2023</h3>
+          <h4>Monday 30 Jan 2023</h4>
         </div>
-      
 
-      <div class="row justify-content-around">
-        <div class="col-6 temp-info" id="temp-info">
-          <span class="temperature" id="temp">19</span>
+        <div class="row justify-content-around">
+          <div class="col-6 temp-info">
+            <span id="temperature">19</span>
+          </div>
+          <div class="col-6">
+            <span class="units">
+              <a href="#" id="c">°C</a> | <a href="#" id="f">°F</a>
+            </span>
+          </div>
         </div>
-        <div class="col-6">
-          <span class="units">
-            <a href="#" id="c">°C</a> | <a href="#" id="f">°F</a>
-          </span>
-        </div>
-      </div>
 
-      <div class="row justify-content-evenly">
-        <div class="col-6 highTemp">H: <span class="highTemp">8</span>°</div>
-        <div class="col-6 lowTemp">L: <span class="lowTemp">-4</span>°</div>
-      </div>
-      <br />
+        <div class="row justify-content-evenly">
+          <div class="col-6 highTemp">H: <span class="highTemp">8</span>°</div>
+          <div class="col-6 lowTemp">L: <span class="lowTemp">-4</span>°</div>
+        </div>
+        <br />
         <div class="row justify-content-evenly daysOfTheWeek">
           <div class="col">Tuesday</div>
           <div class="col">Wednesday</div>
@@ -74,10 +86,8 @@
           <div class="col">Friday</div>
           <div class="col">Saturday</div>
           <div class="col">Sunday</div>
-          <div class="col">Monday</div>
         </div>
         <div class="row justify-content-evenly weatherWeek">
-          <div class="col">☀️</div>
           <div class="col">☀️</div>
           <div class="col">☀️</div>
           <div class="col">☀️</div>
@@ -92,9 +102,8 @@
           <div class="col">14° -1°</div>
           <div class="col">15° -1°</div>
           <div class="col">16° 0°</div>
-          <div class="col">14° 0°</div>
         </div>
-        </div>
+      </div>
     </div>
     <p class="codedBy">
       <a

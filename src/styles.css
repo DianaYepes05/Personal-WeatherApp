@@ -1,18 +1,30 @@
 .weatherApp {
-    border: 1px solid #dadde1;
-    padding: 15px;
-    margin: 20px auto;
-    border-radius: 10px;
-    max-width: 600px;
+  border: 1px solid #dadde1;
+  padding: 15px;
+  margin: 20px auto;
+  border-radius: 10px;
+  max-width: 610px;
 }
-h1,
-defaultCity {
+
+h1 {
   color: rgb(33, 33, 33);
   text-align: center;
   font-size: 45px;
 }
+
 h4 {
   text-align: center;
+}
+.row{
+  align-items: center;
+}
+
+.submit{
+  width: 7%;
+  padding: 7px 0px;
+}
+.current{
+  text-align: end;
 }
 
 .temp-info {
@@ -21,9 +33,10 @@ h4 {
   line-height: 1;
   text-align-last: end;
 }
+
 .highTemp {
   text-align-last: end;
-  width: 548px;
+  width: 300px;
 }
 .units {
   top: -34px;
