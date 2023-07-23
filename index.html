@@ -23,29 +23,28 @@
     <title>Weather App</title>
   </head>
   <body>
-    <div class="container ">
+    <div class="container">
       <div class="weatherApp">
         <div class="row searchingRow">
           <div class="col-6">
-            <p>Current time: <span id="time">09:30</span></p>
+            <ul>
+              <li id="today">Monday 30</li>
+              <li>Current time: <span id="time">09:30</span></li>
+            </ul>
           </div>
           <div class="col-5">
             <input
-            type="search"
-            name="newCity"
-            id="newCity"
-            placeholder="Type a city..."
-            autofocus="on"
-            autocomplete="off"
-            class="form-control shadow-sm"
+              type="search"
+              name="newCity"
+              id="newCity"
+              placeholder="Type a city..."
+              autofocus="on"
+              autocomplete="off"
+              class="form-control shadow-sm"
             />
           </div>
           <div class="col-1 submit">
-            <input
-              type="submit"
-              value="🔎"
-              class="form-control btn"
-            />
+            <input type="submit" value="🔎" class="form-control btn" />
           </div>
         </div>
 
@@ -59,17 +58,13 @@
           <h1>Madrid</h1>
         </div>
 
-        <div id="today">
-          <h4>Monday 30</h4>
-        </div>
-
         <div class="row justify-content-around">
-          <div class="col-7 d-flex  temp-info">
+          <div class="col-7 d-flex temp-info">
             <img
-                src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
-                alt="Cloudy icon"
-                class="weather-icon"
-              />
+              src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+              alt="Cloudy icon"
+              class="weather-icon"
+            />
             <strong id="temperature">19</strong>
           </div>
           <div class="col-5">
