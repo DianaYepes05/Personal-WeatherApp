@@ -44,6 +44,13 @@ ul {
   text-align-last: end;
   width: 300px;
 }
+.airCondition {
+  margin-top: 10px;
+}
+.humidity {
+  text-align-last: end;
+  width: 300px;
+}
 .units {
   top: -34px;
 }
