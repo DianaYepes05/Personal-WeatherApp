@@ -26,37 +26,38 @@
   <body>
     <div class="container">
       <div class="weatherApp">
-        <div class="row searchingRow">
-          <div class="col-6">
-            <ul>
-              <li id="today"></li>
-              <li>Current time: <span id="time"></span></li>
-            </ul>
+        <form class="search-form" id="searchingRow">
+          <div class="row searchingRow" >
+            <div class="col-6">
+              <ul>
+                <li id="today"></li>
+                <li>Current time: <span id="time"></span></li>
+              </ul>
+            </div>
+            <div class="col-5">
+              <input
+                type="search"
+                id="newCity"
+                placeholder="Type a city..."
+                autofocus="on"
+                autocomplete="off"
+                class="form-control shadow-sm"
+                id="searchedCity"
+              />
+            </div>
+            <div class="col-1 submit">
+              <input type="submit" value="🔎" class="form-control btn" />
+            </div>
           </div>
-          <div class="col-5">
-            <input
-              type="search"
-              name="newCity"
-              id="newCity"
-              placeholder="Type a city..."
-              autofocus="on"
-              autocomplete="off"
-              class="form-control shadow-sm"
-            />
-          </div>
-          <div class="col-1 submit">
-            <input type="submit" value="🔎" class="form-control btn" />
-          </div>
-        </div>
-
+        </form>
         <div class="current">
           <button type="button" class="btn btn-success" id="currentButton">
             Current Location
           </button>
         </div>
 
-        <div id="defaultCity">
-          <h1>Madrid</h1>
+        <div>
+          <h1 id="city"></h1>
         </div>
 
         <div class="row justify-content-around">
@@ -77,8 +78,8 @@
         </div>
 
         <div class="row justify-content-evenly">
-          <div class="col-6 highTemp">H: <span id="highTemp">8</span>°</div>
-          <div class="col-6 lowTemp">L: <span id="lowTemp">-4</span>°</div>
+          <div class="col-6 highTemp">H: <span id="highTemp"></span>°</div>
+          <div class="col-6 lowTemp">L: <span id="lowTemp">-</span>°</div>
         </div>
         <div class="row justify-content-evenly airCondition">
           <div class="col-6 humidity">
