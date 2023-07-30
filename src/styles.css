@@ -42,8 +42,8 @@ ul {
   align-items: center;
 }
 
-.highTemp {
-  text-align-last: end;
+.feels-like {
+  text-align-last: center;
   width: 300px;
 }
 .airCondition {

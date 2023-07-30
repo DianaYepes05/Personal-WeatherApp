@@ -73,6 +73,9 @@ function temperatureInfo(response) {
   document.querySelector("#temperature").innerHTML = Math.round(
     response.data.temperature.current
   );
+  
+  document.querySelector("#feels-like").innerHTML=Math.round(response.data.temperature.feels_like);
+
   document.querySelector("#humidity").innerHTML = Math.round(
     response.data.temperature.humidity
   );
@@ -85,7 +88,9 @@ function temperatureInfo(response) {
       "src",
       `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
     );
-    document.querySelector("#weather-icon").setAttribute("alt",`${response.data.condition.description}`)
+  document
+    .querySelector("#weather-icon")
+    .setAttribute("alt", `${response.data.condition.description}`);
 }
 
 function cityName(event) {
@@ -93,8 +98,7 @@ function cityName(event) {
 
   document.querySelector("#city").innerHTML = newCity.value;
 
-  let city = newCity.value;
-  search(city);
+  search(newCity.value);
 }
 
 let citySearch = document.querySelector("#searchingRow");
