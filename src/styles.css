@@ -28,6 +28,7 @@ ul {
   width: 7%;
   padding: 7px 0px;
 }
+
 .current {
   margin-top: 5px;
   text-align: end;
@@ -38,6 +39,7 @@ ul {
   font-size: 50px;
   line-height: 1;
   justify-content: flex-end;
+  align-items: center;
 }
 
 .highTemp {

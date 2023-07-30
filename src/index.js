@@ -25,15 +25,15 @@ function todayIs() {
     "November",
     "December",
   ];
-  
+
   let day = days[now.getDay()];
-  
+
   let date = now.getDate();
-  
+
   let month = months[now.getMonth()];
-  
+
   let today = `${day}, ${month} ${date}`;
-  
+
   return today;
 }
 
@@ -44,46 +44,48 @@ function currentTime() {
   if (hour < 10) {
     hour = `0${hour}`;
   }
-  
+
   let minutes = now.getMinutes();
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
-  
+
   let timing = `${hour}:${minutes}`;
   return timing;
 }
 
 document.querySelector("#time").innerHTML = currentTime();
 
-function search(city){
-  let apiKey = "6643c7326a4c2a38838264a28531d97e";
+function search(city) {
+  let apiKey = "2e036aa0bt1df0677b37040f98ffo9f4";
   let units = "metric";
- // let city = "Madrid";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+  let weatherInfo = "https://api.shecodes.io/weather/v1/current?";
+  let apiUrl = `${weatherInfo}query=${city}&key=${apiKey}&units=${units}`;
+
   axios.get(apiUrl).then(temperatureInfo);
 }
 
 function temperatureInfo(response) {
   console.log(response.data);
 
-  document.querySelector("#city").innerHTML = response.data.name;
+  document.querySelector("#city").innerHTML = response.data.city;
 
   document.querySelector("#temperature").innerHTML = Math.round(
-    response.data.main.temp
-  );
-  document.querySelector("#highTemp").innerHTML = Math.round(
-    response.data.main.temp_max
-  );
-  document.querySelector("#lowTemp").innerHTML = Math.round(
-    response.data.main.temp_min
+    response.data.temperature.current
   );
   document.querySelector("#humidity").innerHTML = Math.round(
-    response.data.main.humidity
+    response.data.temperature.humidity
   );
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
+  document
+    .querySelector("#weather-icon")
+    .setAttribute(
+      "src",
+      `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
+    );
+    document.querySelector("#weather-icon").setAttribute("alt",`${response.data.condition.description}`)
 }
 
 function cityName(event) {
@@ -96,13 +98,13 @@ function cityName(event) {
 }
 
 let citySearch = document.querySelector("#searchingRow");
-citySearch.addEventListener("click", cityName);
+citySearch.addEventListener("submit", cityName);
 
 function currentLocation(position) {
   let units = "metric";
-  let apiKey = "6643c7326a4c2a38838264a28531d97e";
-  let weatherInfo = "https://api.openweathermap.org/data/2.5/weather?";
-  let apiUrl = `${weatherInfo}lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=${units}`;
+  let apiKey = "2e036aa0bt1df0677b37040f98ffo9f4";
+  let weatherInfo = "https://api.shecodes.io/weather/v1/current?";
+  let apiUrl = `${weatherInfo}lat=${position.coordinates.latitude}&lon=${position.coordinates.longitude}&appid=${apiKey}&units=${units}`;
 
   axios.get(apiUrl).then(temperatureInfo);
 }
@@ -113,5 +115,20 @@ function currentButtonWeather() {
 
 let currentButton = document.querySelector("#currentButton");
 currentButton.addEventListener("click", currentButtonWeather);
+
+//function foreCast(city) {
+//let apiKey = "2e036aa0bt1df0677b37040f98ffo9f4";
+//let weatherInfo = "https://api.shecodes.io/weather/v1/forecast?";
+//let apiUrl = `${weatherInfo}${city}&key=${apiKey}`;
+
+//document.querySelector("#").innerHTML = Math.round(
+//response.data.temperature.maximum
+//);
+//document.querySelector("#").innerHTML = Math.round(
+//response.data.temperature.minimum
+// );
+
+//axios.get(apiUrl).then();
+//}
 
 search("New York");
