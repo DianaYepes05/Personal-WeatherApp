@@ -12,6 +12,11 @@ ul {
   list-style-type: none;
   padding: 0px;
 }
+
+a {
+  text-decoration: none;
+}
+
 .weatherApp {
   border: 1px solid #dadde1;
   padding: 15px;
@@ -68,4 +73,12 @@ ul {
 .codedBy {
   text-align: center;
   font-family: arial, sans-serif;
+}
+.units .active {
+  color: rgb(33, 33, 33);
+  cursor: default;
+  text-decoration: none;
+}
+.units .active:hover {
+  text-decoration: none;
 }

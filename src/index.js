@@ -73,8 +73,12 @@ function temperatureInfo(response) {
   document.querySelector("#temperature").innerHTML = Math.round(
     response.data.temperature.current
   );
-  
-  document.querySelector("#feels-like").innerHTML=Math.round(response.data.temperature.feels_like);
+
+  celsiusTemp = response.data.temperature.current;
+
+  document.querySelector("#feels-like").innerHTML = Math.round(
+    response.data.temperature.feels_like
+  );
 
   document.querySelector("#humidity").innerHTML = Math.round(
     response.data.temperature.humidity
@@ -108,7 +112,7 @@ function currentLocation(position) {
   let units = "metric";
   let apiKey = "2e036aa0bt1df0677b37040f98ffo9f4";
   let weatherInfo = "https://api.shecodes.io/weather/v1/current?";
-  let apiUrl = `${weatherInfo}lat=${position.coordinates.latitude}&lon=${position.coordinates.longitude}&appid=${apiKey}&units=${units}`;
+  let apiUrl = `${weatherInfo}lat=${position.data.coordinates.latitude}&lon=${position.data.coordinates.longitude}&appid=${apiKey}&units=${units}`;
 
   axios.get(apiUrl).then(temperatureInfo);
 }
@@ -119,6 +123,35 @@ function currentButtonWeather() {
 
 let currentButton = document.querySelector("#currentButton");
 currentButton.addEventListener("click", currentButtonWeather);
+
+function fahrenheitConvertion(event) {
+  event.preventDefault();
+
+  let fahrenheit = (celsiusTemp * 9) / 5 + 32;
+  let temp = document.querySelector("#temperature");
+  temp.innerHTML = Math.round(fahrenheit);
+
+  imperial.classList.add("active");
+  metrics.classList.remove("active");
+}
+
+function backToCelsius(event) {
+  event.preventDefault();
+
+  let temp = document.querySelector("#temperature");
+  temp.innerHTML = Math.round(celsiusTemp);
+
+  imperial.classList.remove("active");
+  metrics.classList.add("active");
+}
+
+let celsiusTemp = null;
+
+let imperial = document.querySelector("#fahrenheit");
+imperial.addEventListener("click", fahrenheitConvertion);
+
+let metrics = document.querySelector("#celsius");
+metrics.addEventListener("click", backToCelsius);
 
 //function foreCast(city) {
 //let apiKey = "2e036aa0bt1df0677b37040f98ffo9f4";
