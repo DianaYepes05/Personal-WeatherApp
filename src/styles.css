@@ -13,7 +13,7 @@ ul {
   padding: 0px;
 }
 
-a {
+a{
   text-decoration: none;
 }
 
@@ -51,34 +51,36 @@ a {
   text-align-last: center;
   width: 300px;
 }
+
 .airCondition {
   margin-top: 10px;
 }
+
 .humidity {
   text-align-last: end;
   width: 300px;
 }
-.units {
-  top: -34px;
-}
+
 .daysOfTheWeek {
   text-align: center;
 }
+
 .weatherWeek {
   text-align: center;
 }
+
 .tempOfTheWeek {
   text-align: center;
 }
+
 .codedBy {
   text-align: center;
   font-family: arial, sans-serif;
 }
+
 .units .active {
   color: rgb(33, 33, 33);
   cursor: default;
-  text-decoration: none;
-}
-.units .active:hover {
-  text-decoration: none;
-}
+  }
+  
+
