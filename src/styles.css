@@ -47,8 +47,13 @@ a{
   align-items: center;
 }
 
+.description{
+  text-align: center;
+  text-transform: capitalize;
+}
+
 .feels-like {
-  text-align-last: center;
+  text-align-last:center;
   width: 300px;
 }
 

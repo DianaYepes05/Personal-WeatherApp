@@ -40,6 +40,7 @@ function todayIs() {
 document.querySelector("#today").innerHTML = todayIs();
 
 function currentTime() {
+
   let hour = now.getHours();
   if (hour < 10) {
     hour = `0${hour}`;
@@ -76,6 +77,9 @@ function temperatureInfo(response) {
 
   celsiusTemp = response.data.temperature.current;
 
+  document.querySelector("#description").innerHTML =
+    response.data.condition.description;
+
   document.querySelector("#feels-like").innerHTML = Math.round(
     response.data.temperature.feels_like
   );
@@ -109,10 +113,11 @@ let citySearch = document.querySelector("#searchingRow");
 citySearch.addEventListener("submit", cityName);
 
 function currentLocation(position) {
+  
   let units = "metric";
   let apiKey = "2e036aa0bt1df0677b37040f98ffo9f4";
   let weatherInfo = "https://api.shecodes.io/weather/v1/current?";
-  let apiUrl = `${weatherInfo}lat=${position.data.coordinates.latitude}&lon=${position.data.coordinates.longitude}&appid=${apiKey}&units=${units}`;
+  let apiUrl = `${weatherInfo}lon=${position.coords.longitude}&lat=${position.coords.latitude}&key=${apiKey}&units=${units}`;
 
   axios.get(apiUrl).then(temperatureInfo);
 }

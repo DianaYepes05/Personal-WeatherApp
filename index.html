@@ -66,18 +66,25 @@
             <strong id="temperature"></strong>
           </div>
           <div class="col-5 units">
-            <span>
-              <a href="#" id="celsius" class="active">°C</a> |
-              <a href="#" id="fahrenheit">°F</a>
-            </span>
+            <ul>
+              <li>
+                <span>
+                  <a href="#" id="celsius" class="active">°C</a> |
+                  <a href="#" id="fahrenheit">°F</a>
+                </span>
+              </li>
+              <li>
+                Feels like: <span id="feels-like"></span>°
+              </li>
+            </ul>
           </div>
         </div>
 
-        <div class="row justify-content-evenly">
-          <div class="feels-like">
-            Feels like: <span id="feels-like"></span>°
+        <div class="row justify-content-evenly description">
+          <div>
+            <span id="description"></span>
           </div>
-        </div>
+         </div> 
         <div class="row justify-content-evenly airCondition">
           <div class="col-6 humidity">
             Humidity: <span id="humidity"></span>%
