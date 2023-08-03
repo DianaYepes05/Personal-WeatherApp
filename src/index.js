@@ -40,7 +40,6 @@ function todayIs() {
 document.querySelector("#today").innerHTML = todayIs();
 
 function currentTime() {
-
   let hour = now.getHours();
   if (hour < 10) {
     hour = `0${hour}`;
@@ -77,12 +76,14 @@ function temperatureInfo(response) {
 
   celsiusTemp = response.data.temperature.current;
 
-  document.querySelector("#description").innerHTML =
-    response.data.condition.description;
-
   document.querySelector("#feels-like").innerHTML = Math.round(
     response.data.temperature.feels_like
   );
+
+  feelsLike = response.data.temperature.feels_like;
+
+  document.querySelector("#description").innerHTML =
+    response.data.condition.description;
 
   document.querySelector("#humidity").innerHTML = Math.round(
     response.data.temperature.humidity
@@ -113,7 +114,6 @@ let citySearch = document.querySelector("#searchingRow");
 citySearch.addEventListener("submit", cityName);
 
 function currentLocation(position) {
-  
   let units = "metric";
   let apiKey = "2e036aa0bt1df0677b37040f98ffo9f4";
   let weatherInfo = "https://api.shecodes.io/weather/v1/current?";
@@ -136,6 +136,10 @@ function fahrenheitConvertion(event) {
   let temp = document.querySelector("#temperature");
   temp.innerHTML = Math.round(fahrenheit);
 
+  let sensation = (feelsLike * 9) / 5 + 32;
+  let feeling = document.querySelector("#feels-like");
+  feeling.innerHTML = Math.round(sensation);
+
   imperial.classList.add("active");
   metrics.classList.remove("active");
 }
@@ -146,11 +150,15 @@ function backToCelsius(event) {
   let temp = document.querySelector("#temperature");
   temp.innerHTML = Math.round(celsiusTemp);
 
+  let sensation = document.querySelector("#feels-like");
+  sensation.innerHTML = Math.round(feelsLike);
+
   imperial.classList.remove("active");
   metrics.classList.add("active");
 }
 
 let celsiusTemp = null;
+let feelsLike = null;
 
 let imperial = document.querySelector("#fahrenheit");
 imperial.addEventListener("click", fahrenheitConvertion);
