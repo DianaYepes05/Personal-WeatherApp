@@ -88,9 +88,8 @@ function temperatureInfo(response) {
   document.querySelector("#humidity").innerHTML = Math.round(
     response.data.temperature.humidity
   );
-  document.querySelector("#wind").innerHTML = Math.round(
-    response.data.wind.speed
-  );
+  document.querySelector("#windSpeed").innerHTML = `Wind: ${Math.round(
+    response.data.wind.speed)} Km/h`;
 
   kmH = response.data.wind.speed;
 
