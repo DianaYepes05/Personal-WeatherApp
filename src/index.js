@@ -91,6 +91,9 @@ function temperatureInfo(response) {
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
+
+  kmH = response.data.wind.speed;
+
   document
     .querySelector("#weather-icon")
     .setAttribute(
@@ -140,6 +143,11 @@ function fahrenheitConvertion(event) {
   let feeling = document.querySelector("#feels-like");
   feeling.innerHTML = Math.round(sensation);
 
+  let wind = kmH/1.609344;
+  let speed = document.querySelector("#windSpeed");
+  speed.innerHTML = `Wind: ${Math.round(wind)} mph`;
+  
+
   imperial.classList.add("active");
   metrics.classList.remove("active");
 }
@@ -153,12 +161,17 @@ function backToCelsius(event) {
   let sensation = document.querySelector("#feels-like");
   sensation.innerHTML = Math.round(feelsLike);
 
+  let speed = document.querySelector("#windSpeed");
+  speed.innerHTML = `Wind: ${Math.round(kmH)} Km/h`;
+
+
   imperial.classList.remove("active");
   metrics.classList.add("active");
 }
 
 let celsiusTemp = null;
 let feelsLike = null;
+let kmH = null;
 
 let imperial = document.querySelector("#fahrenheit");
 imperial.addEventListener("click", fahrenheitConvertion);
