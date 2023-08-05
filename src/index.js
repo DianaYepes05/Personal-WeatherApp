@@ -131,6 +131,30 @@ function currentButtonWeather() {
 let currentButton = document.querySelector("#currentButton");
 currentButton.addEventListener("click", currentButtonWeather);
 
+function weatherForecast(){
+  let forecastWeather = document.querySelector("#forecastWeather");
+  
+  let forecast = `<div class="row">`;
+  let days = ["Sun", "Mon", "Tues", "Wend", "Thur", "Fri"];
+  days.forEach(function(day){
+    forecast =
+      forecast +
+      ` <div class="col-2">
+        <div class="forecastDay">${day}</div>
+          <img
+            src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png"
+            alt=""
+            width="36"
+          />
+          <span class="forecastTemp-max">11°</span><span class="forecastTemp-min">-1°</span>
+      </div>`;
+  })
+   
+  forecast = forecast + `</div>`;
+  forecastWeather.innerHTML = forecast;
+  
+}
+
 function fahrenheitConvertion(event) {
   event.preventDefault();
 
@@ -178,19 +202,5 @@ imperial.addEventListener("click", fahrenheitConvertion);
 let metrics = document.querySelector("#celsius");
 metrics.addEventListener("click", backToCelsius);
 
-//function foreCast(city) {
-//let apiKey = "2e036aa0bt1df0677b37040f98ffo9f4";
-//let weatherInfo = "https://api.shecodes.io/weather/v1/forecast?";
-//let apiUrl = `${weatherInfo}${city}&key=${apiKey}`;
-
-//document.querySelector("#").innerHTML = Math.round(
-//response.data.temperature.maximum
-//);
-//document.querySelector("#").innerHTML = Math.round(
-//response.data.temperature.minimum
-// );
-
-//axios.get(apiUrl).then();
-//}
-
 search("New York");
+weatherForecast();
