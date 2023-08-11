@@ -8,7 +8,7 @@ function todayIs() {
     "Wednesday",
     "Thursday",
     "Friday",
-    "Saturday",
+    "Saturday"
   ];
 
   let months = [
@@ -23,7 +23,7 @@ function todayIs() {
     "September",
     "October",
     "November",
-    "December",
+    "December"
   ];
 
   let day = days[now.getDay()];
@@ -127,12 +127,12 @@ function currentLocation(position) {
   axios.get(apiUrl).then(temperatureInfo);
 }
 
-function currentButtonWeather() {
+function currentWeatherButton() {
   navigator.geolocation.getCurrentPosition(currentLocation);
 }
 
 let currentButton = document.querySelector("#currentButton");
-currentButton.addEventListener("click", currentButtonWeather);
+currentButton.addEventListener("click", currentWeatherButton);
 
 
 function showForecastWeather(coordinates) {
@@ -143,31 +143,46 @@ function showForecastWeather(coordinates) {
   axios.get(apiUrl).then(weatherForecast);
 }
 
+function formatDay(timestamp){
+  let date = new Date(timestamp*1000);
+  let day = date.getDay();
+  let days = ["Sun","Mon","Tues","Wed","Thur","Fri","Sat"];
+
+  
+return days[day];  
+}
 
 function weatherForecast(response){
-console.log(response.data.daily);
+  console.log(response.data.daily);
+let forecast = response.data.daily;
 
   let forecastWeather = document.querySelector("#forecastWeather");
   
-  let days = ["Sun", "Mon", "Tues", "Wend", "Thur", "Fri"];
-
-  let forecast = `<div class="row">`;
-  days.forEach(function(day){
-    forecast =
-      forecast +
+  let forecastHTML = `<div class="row">`;
+  forecast.forEach(function (dailyForcast) {
+    forecastHTML =
+      forecastHTML +
       ` <div class="col-2">
-        <div class="forecastDay">${day}</div>
+        <div class="forecastDay">${formatDay(
+          dailyForcast.temperature.day
+        )}</div>
           <img
-            src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png"
+            src= "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
+              dailyForcast.condition.icon
+            }.png"
             alt=""
             width="36"
           />
-          <span class="forecastTemp-max">11°</span><span class="forecastTemp-min">-1°</span>
+          <span class="forecastTemp-max">${Math.round(
+            dailyForcast.temperature.maximum
+          )}° </span><span class="forecastTemp-min">${Math.round(
+        dailyForcast.temperature.minimum
+      )}°</span>
       </div>`;
-  })
+  });
    
-  forecast = forecast + `</div>`;
-  forecastWeather.innerHTML = forecast;
+  forecastHTML = forecastHTML + `</div>`;
+  forecastWeather.innerHTML = forecastHTML;
   
 }
 
