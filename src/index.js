@@ -65,6 +65,7 @@ function search(city) {
   axios.get(apiUrl).then(temperatureInfo);
 }
 
+
 function temperatureInfo(response) {
   console.log(response.data);
 
@@ -102,6 +103,8 @@ function temperatureInfo(response) {
   document
     .querySelector("#weather-icon")
     .setAttribute("alt", `${response.data.condition.description}`);
+
+    showForecastWeather(response.data.coordinates);
 }
 
 function cityName(event) {
@@ -131,11 +134,24 @@ function currentButtonWeather() {
 let currentButton = document.querySelector("#currentButton");
 currentButton.addEventListener("click", currentButtonWeather);
 
-function weatherForecast(){
+
+function showForecastWeather(coordinates) {
+
+  let apiKey = "2e036aa0bt1df0677b37040f98ffo9f4";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=metric`;
+
+  axios.get(apiUrl).then(weatherForecast);
+}
+
+
+function weatherForecast(response){
+console.log(response.data.daily);
+
   let forecastWeather = document.querySelector("#forecastWeather");
   
-  let forecast = `<div class="row">`;
   let days = ["Sun", "Mon", "Tues", "Wend", "Thur", "Fri"];
+
+  let forecast = `<div class="row">`;
   days.forEach(function(day){
     forecast =
       forecast +
@@ -203,4 +219,3 @@ let metrics = document.querySelector("#celsius");
 metrics.addEventListener("click", backToCelsius);
 
 search("New York");
-weatherForecast();
