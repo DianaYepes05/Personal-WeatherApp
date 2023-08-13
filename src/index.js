@@ -8,7 +8,7 @@ function todayIs() {
     "Wednesday",
     "Thursday",
     "Friday",
-    "Saturday"
+    "Saturday",
   ];
 
   let months = [
@@ -23,7 +23,7 @@ function todayIs() {
     "September",
     "October",
     "November",
-    "December"
+    "December",
   ];
 
   let day = days[now.getDay()];
@@ -65,7 +65,6 @@ function search(city) {
   axios.get(apiUrl).then(temperatureInfo);
 }
 
-
 function temperatureInfo(response) {
   console.log(response.data);
 
@@ -90,7 +89,8 @@ function temperatureInfo(response) {
     response.data.temperature.humidity
   );
   document.querySelector("#windSpeed").innerHTML = `Wind: ${Math.round(
-    response.data.wind.speed)} Km/h`;
+    response.data.wind.speed
+  )} Km/h`;
 
   kmH = response.data.wind.speed;
 
@@ -104,7 +104,7 @@ function temperatureInfo(response) {
     .querySelector("#weather-icon")
     .setAttribute("alt", `${response.data.condition.description}`);
 
-    showForecastWeather(response.data.coordinates);
+  showForecastWeather(response.data.coordinates);
 }
 
 function cityName(event) {
@@ -134,9 +134,7 @@ function currentWeatherButton() {
 let currentButton = document.querySelector("#currentButton");
 currentButton.addEventListener("click", currentWeatherButton);
 
-
 function showForecastWeather(coordinates) {
-
   let apiKey = "2e036aa0bt1df0677b37040f98ffo9f4";
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=metric`;
 
@@ -144,22 +142,21 @@ function showForecastWeather(coordinates) {
 }
 
 function formatDay(timestamp) {
-  let date = new Date(timestamp*1000);
+  let date = new Date(timestamp * 1000);
   let day = date.getDay();
-  let days = ["Sun","Mon","Tues","Wed","Thur","Fri","Sat"];
+  let days = ["Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"];
 
-  return days[day];  
+  return days[day];
 }
 
 function weatherForecast(response) {
-
-let forecast = response.data.daily;
+  let forecast = response.data.daily;
 
   let forecastWeather = document.querySelector("#forecastWeather");
-  
+
   let forecastHTML = `<div class="row">`;
   forecast.forEach(function (dailyForcast, index) {
-    if(index < 6){
+    if (index < 6) {
       forecastHTML =
         forecastHTML +
         ` <div class="col-2">
@@ -171,18 +168,20 @@ let forecast = response.data.daily;
             alt=""
             width="36"
           />
+          <div class="forecast-temp">
           <span class="forecastTemp-max">${Math.round(
             dailyForcast.temperature.maximum
-          )}° </span><span class="forecastTemp-min">${Math.round(
+          )}° </span>
+          <span class="forecastTemp-min">${Math.round(
           dailyForcast.temperature.minimum
         )}°</span>
+        </div>
       </div>`;
     }
   });
-   
+
   forecastHTML = forecastHTML + `</div>`;
   forecastWeather.innerHTML = forecastHTML;
-  
 }
 
 function fahrenheitConvertion(event) {
@@ -196,10 +195,9 @@ function fahrenheitConvertion(event) {
   let feeling = document.querySelector("#feels-like");
   feeling.innerHTML = Math.round(sensation);
 
-  let wind = kmH/1.609344;
+  let wind = kmH / 1.609344;
   let speed = document.querySelector("#windSpeed");
   speed.innerHTML = `Wind: ${Math.round(wind)} mph`;
-  
 
   imperial.classList.add("active");
   metrics.classList.remove("active");
@@ -216,7 +214,6 @@ function backToCelsius(event) {
 
   let speed = document.querySelector("#windSpeed");
   speed.innerHTML = `Wind: ${Math.round(kmH)} Km/h`;
-
 
   imperial.classList.remove("active");
   metrics.classList.add("active");
