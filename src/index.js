@@ -143,29 +143,27 @@ function showForecastWeather(coordinates) {
   axios.get(apiUrl).then(weatherForecast);
 }
 
-function formatDay(timestamp){
+function formatDay(timestamp) {
   let date = new Date(timestamp*1000);
   let day = date.getDay();
   let days = ["Sun","Mon","Tues","Wed","Thur","Fri","Sat"];
 
-  
-return days[day];  
+  return days[day];  
 }
 
-function weatherForecast(response){
-  console.log(response.data.daily);
+function weatherForecast(response) {
+
 let forecast = response.data.daily;
 
   let forecastWeather = document.querySelector("#forecastWeather");
   
   let forecastHTML = `<div class="row">`;
-  forecast.forEach(function (dailyForcast) {
-    forecastHTML =
-      forecastHTML +
-      ` <div class="col-2">
-        <div class="forecastDay">${formatDay(
-          dailyForcast.temperature.day
-        )}</div>
+  forecast.forEach(function (dailyForcast, index) {
+    if(index < 6){
+      forecastHTML =
+        forecastHTML +
+        ` <div class="col-2">
+        <div class="forecastDay">${formatDay(dailyForcast.time)}</div>
           <img
             src= "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
               dailyForcast.condition.icon
@@ -176,9 +174,10 @@ let forecast = response.data.daily;
           <span class="forecastTemp-max">${Math.round(
             dailyForcast.temperature.maximum
           )}° </span><span class="forecastTemp-min">${Math.round(
-        dailyForcast.temperature.minimum
-      )}°</span>
+          dailyForcast.temperature.minimum
+        )}°</span>
       </div>`;
+    }
   });
    
   forecastHTML = forecastHTML + `</div>`;
