@@ -151,7 +151,7 @@ function formatDay(timestamp) {
 
 function weatherForecast(response) {
   let forecast = response.data.daily;
-
+  
   let forecastWeather = document.querySelector("#forecastWeather");
 
   let forecastHTML = `<div class="row">`;
@@ -168,7 +168,7 @@ function weatherForecast(response) {
             alt=""
             width="36"
           />
-          <div class="forecast-temp">
+          <div id="forecast-temp">
           <span class="forecastTemp-max">${Math.round(
             dailyForcast.temperature.maximum
           )}° </span>
@@ -178,18 +178,30 @@ function weatherForecast(response) {
         </div>
       </div>`;
     }
+
+    forecastMaxTemp = Math.round(dailyForcast.temperature.maximum);
+    forecastMinTemp = Math.round(dailyForcast.temperature.minimum);
+
   });
 
   forecastHTML = forecastHTML + `</div>`;
   forecastWeather.innerHTML = forecastHTML;
 }
 
-function fahrenheitConvertion(event) {
+function fahrenheitConversion(event) {
   event.preventDefault();
 
   let fahrenheit = (celsiusTemp * 9) / 5 + 32;
   let temp = document.querySelector("#temperature");
   temp.innerHTML = Math.round(fahrenheit);
+    
+  let forecastMaxFahrenheit = (forecastMaxTemp * 9) / 5 + 32;
+  let maxTemp = document.querySelector(".forecastTemp-max");
+  maxTemp.innerHTML = `${Math.round(forecastMaxFahrenheit)}°` ;
+  
+  let forecastMinFahrenheit = (forecastMinTemp * 9) / 5 + 32;
+  let minTemp = document.querySelector(".forecastTemp-min");
+  minTemp.innerHTML = `${Math.round(forecastMinFahrenheit)}°` ;
 
   let sensation = (feelsLike * 9) / 5 + 32;
   let feeling = document.querySelector("#feels-like");
@@ -209,6 +221,12 @@ function backToCelsius(event) {
   let temp = document.querySelector("#temperature");
   temp.innerHTML = Math.round(celsiusTemp);
 
+  let maxTemp = document.querySelector(".forecastTemp-max");
+  maxTemp.innerHTML = forecastMaxTemp;
+
+  let minTemp = document.querySelector(".forecastTemp-min");
+  minTemp.innerHTML = forecastMinTemp;
+
   let sensation = document.querySelector("#feels-like");
   sensation.innerHTML = Math.round(feelsLike);
 
@@ -222,9 +240,11 @@ function backToCelsius(event) {
 let celsiusTemp = null;
 let feelsLike = null;
 let kmH = null;
+let forecastMaxTemp = null;
+let forecastMinTemp = null;
 
 let imperial = document.querySelector("#fahrenheit");
-imperial.addEventListener("click", fahrenheitConvertion);
+imperial.addEventListener("click", fahrenheitConversion);
 
 let metrics = document.querySelector("#celsius");
 metrics.addEventListener("click", backToCelsius);
